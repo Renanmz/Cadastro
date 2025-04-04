@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+    <!-- Link do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Formulario</a>
+                <a class="navbar-brand" href="tabel.html">Tabela</a>
+            </div>
+        </nav>
+    </header>
+    <main id="main-table" class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f0fdfd;">
+        <div class="container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Fone</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Dados preenchidos dinamicamente com o JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Script para funcionalidades interativas do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tabelaData = JSON.parse(localStorage.getItem("tabelaData")) || [];
+            const tableBody = document.getElementById("table-body");
+            
+            tabelaData.forEach((dados) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${dados.nome}</td>
+                    <td>${dados.idade}</td>
+                    <td>${dados.fone}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        });
+    </script>
+</body>
+
+</html>
