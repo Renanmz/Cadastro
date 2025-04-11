@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Recupera os dados armazenados no localStorage
+            const tabelaData = JSON.parse(localStorage.getItem("tabelaData")) || [];
+    
+            // Referência ao corpo da tabela
+            const tableBody = document.getElementById("table-body");
+    
+            // Preenche a tabela com os dados
+            tabelaData.forEach((dados) => {
+                const tr = document.createElement("tr");
+    
+                const tdNome = document.createElement("td");
+                tdNome.textContent = dados.nome;
+                tr.appendChild(tdNome);
+    
+                const tdIdade = document.createElement("td");
+                tdIdade.textContent = dados.idade;
+                tr.appendChild(tdIdade);
+    
+                const tdFone = document.createElement("td");
+                tdFone.textContent = dados.fone;
+                tr.appendChild(tdFone);
+    
+                tableBody.appendChild(tr);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="nav-item">
+                <h3><a href="index.html">Formulario</a></h3>
+            </div>
+            <div id="nav-item"> 
+                <h3><a href="tabel.html">Tabela</a></h3>
+            </div>
+        </nav>
+    </header>
+    <main id="main-table">
+        <table>
+            <thead>
+            <th id="table-head-nome">
+                Nome
+            </th>
+            <th id="table-head-idade">
+                Idade
+            </th>
+            <th id="table-head-fone">
+                Fone
+            </th>
+        </thead>
+        <tbody id="table-body">
+
+        </tbody>
+        </table>
+    </main>
+</body>
+</html>
